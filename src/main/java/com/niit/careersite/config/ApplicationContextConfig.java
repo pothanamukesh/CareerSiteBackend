@@ -14,7 +14,7 @@ import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import com.niit.careersite.DAO.BlogDAO;
+/*import com.niit.careersite.DAO.BlogDAO;
 import com.niit.careersite.DAO.BlogLikesDAO;
 import com.niit.careersite.DAO.ForumCommentDAO;
 import com.niit.careersite.DAO.ForumDAO;
@@ -27,7 +27,7 @@ import com.niit.careersite.DAOImpl.ForumCommentDAOImpl;
 import com.niit.careersite.DAOImpl.ForumDAOImpl;
 import com.niit.careersite.DAOImpl.FriendDAOImpl;
 import com.niit.careersite.DAOImpl.JobDAOImpl;
-import com.niit.careersite.DAOImpl.UsersDAOImpl;
+import com.niit.careersite.DAOImpl.UsersDAOImpl;*/
 import com.niit.careersite.model.Blog;
 import com.niit.careersite.model.BlogLikes;
 import com.niit.careersite.model.Forum;
@@ -50,7 +50,7 @@ public class ApplicationContextConfig {
 		dataSource.setUsername("COLB_DB");
 		dataSource.setPassword("mukesh");
 
-		System.out.println("Datasource");
+		System.out.println("DataBase is connected.........!");
 		return dataSource;
 
 	}
@@ -80,7 +80,7 @@ public class ApplicationContextConfig {
 		  sessionBuilder.addAnnotatedClasses(ForumComment.class);
 		 sessionBuilder.addAnnotatedClasses(BlogLikes.class);
 		 
-		System.out.println("Session");
+		System.out.println("Session is crated................!");
 
 		return sessionBuilder.buildSessionFactory();
 
@@ -90,12 +90,12 @@ public class ApplicationContextConfig {
 	@Bean(name = "transactionManager")
 	public HibernateTransactionManager getTransactionManager(SessionFactory sessionFactory) {
 		HibernateTransactionManager transactionManager = new HibernateTransactionManager(sessionFactory);
-		System.out.println("Transaction");
+		System.out.println("Transaction is crated............!");
 		return transactionManager;
 	}
 
 	
-  @Autowired
+  /*@Autowired
 	   @Bean(name = "usersDAO") public UsersDAO getUsersDao(SessionFactory sessionFactory) {
 		  System.out.println("User is created.......!"); 
 		  return new UsersDAOImpl(sessionFactory);
@@ -140,6 +140,6 @@ public class ApplicationContextConfig {
 	  @Bean(name = "blogLikesDAO") public BlogLikesDAO
 	  getBlogLikesDao(SessionFactory sessionFactory) {
 	  System.out.println("BlogLikes is done"); return new
-	  BlogLikesDAOImpl(sessionFactory); }
+	  BlogLikesDAOImpl(sessionFactory); }*/
 	 
 }

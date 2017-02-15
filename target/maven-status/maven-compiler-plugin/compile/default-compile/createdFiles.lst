@@ -22,5 +22,6 @@ com\niit\careersite\DAOImpl\ForumCommentDAOImpl.class
 com\niit\careersite\DAO\JobDAO.class
 com\niit\careersite\model\Users.class
 com\niit\careersite\config\WebSocketConfig.class
+com\niit\careersite\controller\LoginController.class
 com\niit\careersite\model\Forum.class
 com\niit\careersite\model\Message.class
