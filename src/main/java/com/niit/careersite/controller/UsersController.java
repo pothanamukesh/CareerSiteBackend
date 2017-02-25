@@ -21,6 +21,8 @@ public class UsersController {
 
 	@Autowired
 	private UsersDAO usersDAO;
+	@Autowired
+	private Users users;
 
 	@PostMapping(value = "/register")
 	public ResponseEntity<Users> adduser(@RequestBody Users users) {
@@ -36,6 +38,7 @@ public class UsersController {
 	public ResponseEntity<List<Users>> listuser() {
 		System.out.println("list of users");
 		List<Users> users1 = usersDAO.list();
+	
 		return new ResponseEntity<List<Users>>(users1, HttpStatus.OK);
 	}
 
@@ -72,7 +75,7 @@ public class UsersController {
 		List<Users> nonfriends = usersDAO.nonfriends(uid);
 		return new ResponseEntity<List<Users>>(nonfriends, HttpStatus.OK);
 	}
-	
+
 	@GetMapping("/hello")
 	public  String sayhello()
 	{

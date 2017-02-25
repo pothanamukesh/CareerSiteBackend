@@ -80,7 +80,7 @@ public class UsersDAOImpl implements UsersDAO {
 		return list.get(0);
 
 	}
-
+	
 	@SuppressWarnings({ "rawtypes", "deprecation", "unchecked" })
 	@Transactional
 	public Users oneuser(int id) {

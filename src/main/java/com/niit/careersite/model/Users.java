@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 @Entity
 @Table(name = "userdetails")
 @Component
-public class Users {
+public class Users extends BaseDomain{
 	@Id
 	@GeneratedValue
 	private int id;
