@@ -17,7 +17,7 @@ public class Blog {
 	@GeneratedValue
 	private int id;
 	private String title;
-	private String userid;
+	private int userid;
 	private Date doc;
 	private String content;
 	private Integer bloglike;
@@ -46,10 +46,10 @@ public class Blog {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public String getUserid() {
+	public int getUserid() {
 		return userid;
 	}
-	public void setUserid(String userid) {
+	public void setUserid(int userid) {
 		this.userid = userid;
 	}
 	public Date getDoc() {

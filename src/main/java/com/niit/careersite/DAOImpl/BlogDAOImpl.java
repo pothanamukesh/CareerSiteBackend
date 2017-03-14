@@ -26,7 +26,7 @@ public class BlogDAOImpl implements BlogDAO {
 	public boolean saveOrUpdate(Blog blog) {
 		try {
 			sessionFactory.getCurrentSession().saveOrUpdate(blog);
-			System.out.println("save");
+			System.err.println("Blog is saved.........!");
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -38,6 +38,8 @@ public class BlogDAOImpl implements BlogDAO {
 	public boolean delete(Blog blog) {
 		try {
 			sessionFactory.getCurrentSession().delete(blog);
+			System.err.println("Blog is delete....!");
+
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -30,10 +30,10 @@ public class BlogController {
 
 	@PostMapping(value = "/createblog")
 	public ResponseEntity<Blog> addblog(@RequestBody Blog blog, HttpSession session) {
-		System.out.println("AddBlog Function Stare...........................!");
+		System.out.println("AddBlog Function Stared...........................!");
 		String name = blog.getTitle();
 		System.out.println(name);
-		String uid = (String) session.getAttribute("username");
+		int uid = (Integer) session.getAttribute("uid");
 		blog.setStatus("n");
 		blog.setDoc(new Date());
 		blog.setUserid(uid);
@@ -58,16 +58,28 @@ public class BlogController {
 
 	@DeleteMapping(value = "/deleteblog/{blogid}")
 	public ResponseEntity<Blog> deleteblog(Blog blog, @PathVariable("blogid") int blogid) {
+		System.err.println("blogid"+blogid);
 		Blog blog1 = blogDAO.get(blogid);
-		blogDAO.delete(blog);
+		blogDAO.delete(blog1);
 		return new ResponseEntity<Blog>(blog, HttpStatus.OK);
+	}
+	
+	@GetMapping(value = "/bloglikes")
+	public ResponseEntity<List<BlogLikes>> listbloglikes( HttpSession session) {
+		int uid = (Integer) session.getAttribute("uid");
+		System.out.println("list of bloglikes");
+		List<BlogLikes> blog = blogLikesDAO.list(uid);
+		return new ResponseEntity<List<BlogLikes>>(blog, HttpStatus.OK);
 	}
 
 	@PostMapping(value = "/likeblog/{blogid}")
 	public ResponseEntity<Blog> likeblog(BlogLikes blogLikes, @PathVariable("blogid") int blogid, HttpSession session) {
 		int uid = (Integer) session.getAttribute("uid");
+		System.err.println("uid is="+session.getAttribute("uid"));
+		//String uid2 = (String) session.getAttribute("uid");
 		blogLikes.setBlogid(blogid);
 		blogLikes.setUserid(uid);
+		System.err.println("user Id: "+uid);
 		blogLikes.setLikes("like");
 		blogLikesDAO.saveOrUpdate(blogLikes);
 		List<BlogLikes> list = blogLikesDAO.bloglist(blogid);
@@ -83,7 +95,7 @@ public class BlogController {
 		BlogLikes blogLikes = blogLikesDAO.list(uid, blogid);
 		blogLikesDAO.delete(blogLikes);
 		List<BlogLikes> list = blogLikesDAO.bloglist(blogid);
-		Blog blog = blogDAO.get(blogid);
+		Blog blog = blogDAO.get(blogid); 
 		blog.setBloglike(list.size());
 		blogDAO.saveOrUpdate(blog);
 		return new ResponseEntity<Blog>(HttpStatus.OK);

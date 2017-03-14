@@ -30,8 +30,8 @@ public class FriendController {
 		String uid=(String) session.getAttribute("username");
 		friend.setUserid(uid);
 		friend.setFriendid(fid);
-		friend.setStatus('n');
-		friend.setIsonline('o');
+		friend.setStatus('N');
+		friend.setIsonline('O');
 		friendDAO.saveOrUpdate(friend);
 		return new ResponseEntity<Friend>(friend,HttpStatus.OK);
 	}
@@ -53,12 +53,12 @@ public class FriendController {
 	public ResponseEntity<Friend> acceptfriend(@PathVariable("fid") String fid,HttpSession session){
 		String uid=(String) session.getAttribute("username");
 		Friend friend=friendDAO.newrequest(fid, uid);
-		friend.setStatus('a');
+		friend.setStatus('A');
 		friendDAO.saveOrUpdate(friend);
 		Friend friend1=new Friend();
 		friend1.setUserid(uid);
 		friend1.setFriendid(fid);
-		friend1.setStatus('a');
+		friend1.setStatus('A');
 		friendDAO.saveOrUpdate(friend1);
 		return new ResponseEntity<Friend>(friend,HttpStatus.OK);
 	}
@@ -66,7 +66,7 @@ public class FriendController {
 	public ResponseEntity<Friend> rejectfriend(@PathVariable("fid") String fid,HttpSession session){
 		String uid=(String) session.getAttribute("username");
 		Friend friend=friendDAO.newrequest(fid, uid);
-		friend.setStatus('r');
+		friend.setStatus('R');
 		friendDAO.saveOrUpdate(friend);
 		return new ResponseEntity<Friend>(HttpStatus.OK);
 	}

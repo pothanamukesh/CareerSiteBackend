@@ -60,7 +60,7 @@ public Friend newrequest(String uid,String fid) {
 
 @Transactional
 public List<Friend> getfriendlist(String uid) {
-	String hql="from Friend where userid='"+uid+"' and status='a'";
+	String hql="from Friend where userid='"+uid+"' and status='A'";
 	Query query=sessionFactory.getCurrentSession().createQuery(hql);
 	List<Friend> list = query.list();
 	return list;
@@ -68,7 +68,7 @@ public List<Friend> getfriendlist(String uid) {
 
 @Transactional
 public List<Friend> getrequestlist(String uid) {
-	String hql="from Friend where friendid='"+uid+"' and status='n'";
+	String hql="from Friend where friendid='"+uid+"' and status='N'";
 	Query query=sessionFactory.getCurrentSession().createQuery(hql);
 	List<Friend> list = query.list();
 	return list;

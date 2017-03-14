@@ -74,11 +74,12 @@ public class UsersDAOImpl implements UsersDAO {
 
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		List<Users> list = query.list();
-		/*
-		 * if (list == null) { return null; } else {
-		 */
-		return list.get(0);
-
+		if (list.isEmpty()) {
+			return null;	
+			}
+		else {
+			return list.get(0);
+		}
 	}
 	
 	@SuppressWarnings({ "rawtypes", "deprecation", "unchecked" })
@@ -89,7 +90,7 @@ public class UsersDAOImpl implements UsersDAO {
 
 		List<Users> list = query.list();
 
-		if (list == null) {
+		if (list.isEmpty()) {
 			return null;
 		} else {
 			return list.get(0);
@@ -112,7 +113,7 @@ public class UsersDAOImpl implements UsersDAO {
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		List<Users> list = query.list();
 
-		if (list == null) {
+		if (list.isEmpty()) {
 			return null;
 		} else {
 			return list.get(0);

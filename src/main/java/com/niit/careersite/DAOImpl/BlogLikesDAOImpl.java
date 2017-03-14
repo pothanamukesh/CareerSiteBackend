@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.niit.careersite.DAO.BlogLikesDAO;
+import com.niit.careersite.model.Blog;
 import com.niit.careersite.model.BlogLikes;
 
 
@@ -72,5 +73,15 @@ List<BlogLikes>list= query.list();
 		List<BlogLikes> list=c.list();
         return list;
 	}
+	@Transactional
+	public List<BlogLikes> list(int uid) {
+//		Criteria c=sessionFactory.getCurrentSession().createCriteria(BlogLikes.class);
+		String hql = "from BlogLikes where userid ="+uid;
+		List<BlogLikes> list=sessionFactory.getCurrentSession().createQuery(hql).list();
+		System.err.println("featching BlogLikes..........!");
+		return list;
+	}
+
+
 
 }
